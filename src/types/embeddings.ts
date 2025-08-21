@@ -6,7 +6,7 @@ export interface IEmbeddingsResponse {
   metadata: IMetadataRecord;
 }
 
-export interface EmbeddingsOptions {
+export interface IEmbeddingsOptions {
   model?: string;
   metadata?: Record<string, any>;
 }

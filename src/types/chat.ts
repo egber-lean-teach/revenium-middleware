@@ -1,3 +1,4 @@
+import { IMetadataRecord } from "./metadataRecord";
 import { Role } from "./role";
 
 export interface IChatMessage {
@@ -5,7 +6,7 @@ export interface IChatMessage {
   content: string;
 }
 
-export interface ChatOptions {
+export interface IChatOptions {
   model?: string;
   temperature?: number;
   maxOutputTokens?: number;
@@ -13,4 +14,9 @@ export interface ChatOptions {
   topK?: number;
   stopSequences?: string[];
   metadata?: Record<string, any>;
+}
+
+export interface IChatResponse {
+  text: string;
+  metadata: IMetadataRecord;
 }
