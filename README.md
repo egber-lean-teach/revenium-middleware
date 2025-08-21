@@ -1,65 +1,110 @@
-## Revenium middleware
+# Middleware for Google AI (Node.js)
 
-```md
-const { text, metadata } = await chat.chat([
-{ role: 'system', content: 'Eres útil' },
-{ role: 'user', content: 'Hola' }
-]);
-```
+This repository provides a **Node.js middleware** that integrates with **Google AI (Gemini / Vertex AI)**.  
+It offers an easy and modular way to use **chat-based interactions**, **embeddings generation**, and **streaming responses** inside your Node.js applications.
 
-## Uso rápido (Vertex AI)
+---
 
-```ts
-import { ChatMiddleware } from "revenium-middleware-google-node";
+## ✨ Features
 
-const chat = new ChatMiddleware({ provider: "vertex-ai" });
-const { text, metadata } = await chat.chat([
-  { role: "user", content: "Hola desde Vertex" },
-]);
-```
+- 🔹 **Chat Middleware** – Handle chat messages with Google AI models.
+- 🔹 **Embeddings Generator** – Create embeddings for semantic search, similarity, and clustering tasks.
+- 🔹 **Streaming Responses** – Stream model outputs in real time instead of waiting for a full response.
+- 🔹 **Configurable Environment** – Supports `.env` for managing API keys and project configuration.
+- 🔹 **TypeScript Ready** – Fully typed for better developer experience.
 
-## Streaming
+---
 
-```ts
-await chat.stream(messages, {
-  onToken: (t) => process.stdout.write(t),
-  onDone: (final, meta) => console.log("\nDONE", meta),
-});
-```
-
-## Embeddings
-
-- Google AI: soporte **básico**; depende de la versión del SDK (puede no estar expuesto). Usa `text-embedding-004`.
-- Vertex AI: soporte **completo** con `text-embedding-004`.
-
-```ts
-import { EmbeddingsMiddleware } from "revenium-middleware-google-node";
-
-const emb = new EmbeddingsMiddleware({ provider: "vertex-ai" });
-const res = await emb.embed(["hola mundo"]);
-console.log(res.embeddings[0].length);
-```
-
-## Métricas y Metadata
-
-Cada llamada devuelve `metadata` con `requestId`, `latencyMs` y `tokenUsage` (estimado). Para contabilidad exacta, utiliza datos de facturación de GCP.
-
-## Ejemplos
+## 📦 Installation
 
 ```bash
-npm run build
-node --env-file=.env examples/chat_google_ai.mjs
-node --env-file=.env examples/chat_vertex_ai.mjs
-node --env-file=.env examples/streaming_google_ai.mjs
-node --env-file=.env examples/streaming_vertex_ai.mjs
-node --env-file=.env examples/embeddings_vertex_ai.mjs
+git clone https://github.com/your-org/middleware-node-js.git
+cd middleware-node-js
+npm install
 ```
 
-## Notas de paridad con Python
+Or add it directly to your project:
 
-- Se mantienen las mismas features; difiere el conteo de tokens (estimado en Node). Si necesitas equivalencia 1:1, reemplaza `tokens.ts` por un tokenizer específico del modelo.
-- La API de `embedContent` puede variar entre versiones. Si tu SDK no lo expone para Google AI, el ejemplo lanza un error orientativo y recomienda usar Vertex para embeddings.
+```bash
+npm install your-middleware-package
+```
 
-## Licencia
+---
 
-Apache-2.0
+## ⚙️ Environment Setup
+
+Create a `.env` file based on the provided `.env.example`:
+
+```env
+GOOGLE_API_KEY=your-google-api-key
+GOOGLE_PROJECT_ID=your-project-id
+GOOGLE_LOCATION=us-central1
+```
+
+---
+
+## 🚀 Usage
+
+### 1. Chat Middleware
+
+```ts
+import { chatMiddleware } from "./examples/chat_middleware_google";
+
+async function run() {
+  const response = await chatMiddleware("Hello, how are you?");
+  console.log(response);
+}
+
+run();
+```
+
+### 2. Embeddings
+
+```ts
+import { generateEmbeddings } from "./examples/embeddings_google_ai";
+
+async function run() {
+  const embeddings = await generateEmbeddings(
+    "Artificial intelligence is awesome"
+  );
+  console.log(embeddings);
+}
+
+run();
+```
+
+### 3. Streaming Responses
+
+```ts
+import { streamResponse } from "./examples/streaming_google_ai";
+
+async function run() {
+  await streamResponse("Tell me a story about space exploration");
+}
+
+run();
+```
+
+---
+
+## 📖 Scripts
+
+- `npm run build` → Compile TypeScript
+
+---
+
+## 🛠️ Tech Stack
+
+- [Node.js](https://nodejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Google Generative AI SDK](https://www.npmjs.com/package/@google/generative-ai)
+
+---
+
+## 📌 Notes
+
+- Requires a valid **Google API Key**.
+- Designed to work with **Vertex AI / Gemini models**.
+- Can be extended to support additional providers in the future.
+
+---
