@@ -1,5 +1,7 @@
 import { IMetadataRecord } from "./metadataRecord";
+import { Provider } from "./provider";
 import { Role } from "./role";
+import { IVertexConfig } from "./vertexConfig";
 
 export interface IChatMessage {
   role: Role;
@@ -19,4 +21,10 @@ export interface IChatOptions {
 export interface IChatResponse {
   text: string;
   metadata: IMetadataRecord;
+}
+
+export interface IChatInit {
+  provider: Provider;
+  google?: { apiKey?: string; model?: string };
+  vertex?: IVertexConfig;
 }

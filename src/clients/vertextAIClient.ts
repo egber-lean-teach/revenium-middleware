@@ -17,7 +17,7 @@ import {
   startMetadata,
 } from "../middleware";
 
-export class VertextAIClient implements AIClient {
+export class VertexAIClient implements AIClient {
   private modelName: string;
   private vertex: VertexAI;
 

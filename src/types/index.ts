@@ -6,3 +6,4 @@ export * from "./role";
 export * from "./streamCallbacks";
 export * from "./tokenUsage";
 export * from "./mapMessages";
+export * from "./vertexConfig";
