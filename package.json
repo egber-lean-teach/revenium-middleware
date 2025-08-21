@@ -28,8 +28,9 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "npm run build && tsx examples/example.ts",
-    "example": "npm run build && tsx examples/example.ts",
-    "example:google": "tsx examples/chat_middleware_google.ts",
+    "embeddings:google": "npx tsx examples/embeddings_google_ai.ts",
+    "chat:google": "npx tsx examples/chat_middleware_google.ts",
+    "streaming:google": "npx tsx examples/streaming_google_ai.ts",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build"
   },

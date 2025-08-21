@@ -7,11 +7,11 @@ It offers an easy and modular way to use **chat-based interactions**, **embeddin
 
 ## ✨ Features
 
-- 🔹 **Chat Middleware** – Handle chat messages with Google AI models.
-- 🔹 **Embeddings Generator** – Create embeddings for semantic search, similarity, and clustering tasks.
-- 🔹 **Streaming Responses** – Stream model outputs in real time instead of waiting for a full response.
-- 🔹 **Configurable Environment** – Supports `.env` for managing API keys and project configuration.
-- 🔹 **TypeScript Ready** – Fully typed for better developer experience.
+- **Chat Middleware** – Handle chat messages with Google AI models.
+- **Embeddings Generator** – Create embeddings for semantic search, similarity, and clustering tasks.
+- **Streaming Responses** – Stream model outputs in real time instead of waiting for a full response.
+- **Configurable Environment** – Supports `.env` for managing API keys and project configuration.
+- **TypeScript Ready** – Fully typed for better developer experience.
 
 ---
 
@@ -90,6 +90,9 @@ run();
 ## 📖 Scripts
 
 - `npm run build` → Compile TypeScript
+- `npm run embeddings:google` → Show embeddings google AI example.
+- `npm run chat:google` → Show chat google AI example.
+- `npm run streaming:google` → Show streaming google AI example.
 
 ---
 
