@@ -1,22 +1,16 @@
 import { GenerativeModel, GoogleGenerativeAI } from "@google/generative-ai";
-import {
-  IChatMessage,
-  IChatOptions,
-  IChatResponse,
-  IEmbeddingsOptions,
-  IEmbeddingsResponse,
-  IMapMessages,
-  IMetadataRecord,
-  IStreamCallbacks,
-  ITokenUsage,
-} from "../types";
-import {
-  finishMetadata,
-  makeChatUsage,
-  makeUsage,
-  startMetadata,
-} from "../middleware";
 import { AIClient } from "../types/googleAI";
+import { IMapMessages } from "../types/mapMessages";
+import { IChatMessage } from "../types/chat";
+import { IChatOptions } from "../types/chat";
+import { IChatResponse } from "../types/chat";
+import { startMetadata } from "../middleware/metadata";
+import { finishMetadata } from "../middleware/metadata";
+import { IMetadataRecord } from "../types/metadataRecord";
+import { ITokenUsage } from "../types/tokenUsage";
+import { makeChatUsage, makeUsage } from "../middleware/tokens";
+import { IStreamCallbacks } from "../types/streamCallbacks";
+import { IEmbeddingsOptions, IEmbeddingsResponse } from "../types/embeddings";
 
 export class GoogleAiClient implements AIClient {
   private modelName: string;

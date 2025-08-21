@@ -1,10 +1,8 @@
-import { GoogleAiClient, VertexAIClient } from "../clients";
-import {
-  IChatInit,
-  IEmbeddingsOptions,
-  IEmbeddingsResponse,
-  Provider,
-} from "../types";
+import { GoogleAiClient } from "../clients/googleAiClient";
+import { VertexAIClient } from "../clients/vertextAIClient";
+import { IChatInit } from "../types/chat";
+import { IEmbeddingsOptions, IEmbeddingsResponse } from "../types/embeddings";
+import { Provider } from "../types/provider";
 
 export class EmbeddingsMiddleware {
   private provider: Provider;

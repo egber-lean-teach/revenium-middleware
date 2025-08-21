@@ -1,22 +1,13 @@
 import { AIClient } from "../types/googleAI";
 import { GenerativeModel, VertexAI } from "@google-cloud/vertexai";
 import { IVertexConfig } from "../types/vertexConfig";
-import {
-  IChatMessage,
-  IChatOptions,
-  IEmbeddingsOptions,
-  IEmbeddingsResponse,
-  IMetadataRecord,
-  IStreamCallbacks,
-  ITokenUsage,
-} from "../types";
-import {
-  finishMetadata,
-  makeChatUsage,
-  makeUsage,
-  startMetadata,
-} from "../middleware";
-
+import { IChatMessage, IChatOptions } from "../types/chat";
+import { finishMetadata, startMetadata } from "../middleware/metadata";
+import { IMetadataRecord } from "../types/metadataRecord";
+import { makeChatUsage, makeUsage } from "../middleware/tokens";
+import { IStreamCallbacks } from "../types/streamCallbacks";
+import { ITokenUsage } from "../types/tokenUsage";
+import { IEmbeddingsOptions, IEmbeddingsResponse } from "../types/embeddings";
 export class VertexAIClient implements AIClient {
   private modelName: string;
   private vertex: VertexAI;

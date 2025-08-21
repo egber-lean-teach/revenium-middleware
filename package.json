@@ -11,24 +11,52 @@
     "url": "git+https://github.com/egber-lean-teach/revenium-middleware.git"
   },
   "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs --clean",
-    "dev": "tsup src/index.ts --dts --format esm,cjs --watch",
-    "lint": "eslint .",
-    "examples": "node --env-file=.env examples/chat_google_ai.mjs"
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run build && tsx examples/example.ts",
+    "example": "npm run build && tsx examples/example.ts",
+    "example:google": "tsx examples/chat_middleware_google.ts",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "middleware",
+    "google-ai",
+    "vertex-ai",
+    "chat",
+    "streaming",
+    "embeddings",
+    "metering",
+    "metadata"
+  ],
+  "author": "Revenium",
   "dependencies": {
     "@google-cloud/vertexai": "^1.10.0",
     "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.2.1",
     "eventsource-parser": "^3.0.5",
     "zod": "^4.0.17"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
     "tsup": "^8.5.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "rimraf": "^6.0.1"
   }
 }

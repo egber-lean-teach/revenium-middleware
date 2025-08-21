@@ -1,11 +1,8 @@
-import { GoogleAiClient, VertexAIClient } from "../clients";
-import {
-  IChatInit,
-  IChatMessage,
-  IChatOptions,
-  IStreamCallbacks,
-  Provider,
-} from "../types";
+import { GoogleAiClient } from "../clients/googleAiClient";
+import { VertexAIClient } from "../clients/vertextAIClient";
+import { IChatInit, IChatMessage, IChatOptions } from "../types/chat";
+import { Provider } from "../types/provider";
+import { IStreamCallbacks } from "../types/streamCallbacks";
 
 export class ChatMiddleware {
   private provider: Provider;
