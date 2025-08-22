@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { ChatMiddleware } from "../src/middleware/chat";
+import { ChatMiddleware } from "../../src/middleware/chat";
 
 const chat = new ChatMiddleware({
   provider: "google-ai",

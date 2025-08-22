@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { EmbeddingsMiddleware } from "../src/middleware/embeddings";
+import { EmbeddingsMiddleware } from "../../src/middleware/embeddings";
 
 const embeddings = new EmbeddingsMiddleware({
   provider: "google-ai",
